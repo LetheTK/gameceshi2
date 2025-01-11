@@ -9,8 +9,6 @@ interface RootLayoutInnerProps {
 }
 
 export default function RootLayoutInner({ children, inter }: RootLayoutInnerProps) {
-  const { language } = useLanguage()
-  
   return (
     <div className={inter.className}>
       {children}

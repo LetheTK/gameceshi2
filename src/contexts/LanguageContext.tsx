@@ -5,7 +5,7 @@
 
 'use client'
 
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { translations } from '@/locales/translations'
 
 export type Language = 'zh' | 'en'
@@ -27,12 +27,6 @@ const LanguageContext = createContext<LanguageContextType | null>(null)
  */
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>('en')
-  const [mounted, setMounted] = useState(false)
-
-  // 只设置 mounted 状态，不检测浏览器语言
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   const t = (key: keyof typeof translations.zh | keyof typeof translations.en) => {
     return translations[language][key] || key
